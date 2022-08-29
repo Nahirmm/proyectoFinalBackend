@@ -56,6 +56,15 @@ class ProductsDaoClass {
             logger.error("Error in deleteProduct-DAO: " + error)
         }
     } 
+
+    async getProductsByCategory(category){
+        try {
+            const productsByCategory = await productsModel.find({ category })
+            return productsByCategory
+        } catch (error) {
+            logger.error("Error in getProductsByCategory: " + error)
+        }
+    }
 }
 
 module.exports = ProductsDaoClass

@@ -87,6 +87,16 @@ class ProductsServices {
             logger.error("Error " + error)
         }
     } 
+
+    async getProductsByCategory(category){
+        try {
+            const productsByCategory = await prodDao.getProductsByCategory(category)
+            return productsByCategory
+        } catch (error) {
+            logger.error("Error " + error)
+        }
+    }
+
 }
 
 module.exports = ProductsServices

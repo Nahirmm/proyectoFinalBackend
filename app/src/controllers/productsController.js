@@ -59,6 +59,19 @@ class productsControllers {
             res.status(500).json({error: error.message})
         }
     }
+
+    async getProductsByCategory(req, res) {
+        try {
+            const productsByCategory = await newContainerProducts.getProductsByCategory(req.params.category)
+            if (productsByCategory != undefined) {
+                return res.status(200).json(productsByCategory)
+            } else {
+                return res.status(404).json({ error : 'Categoria no encontrada' })
+            }
+        } catch (error) {
+            res.status(500).json({error: error.message})
+        }
+    }
 }
 
 

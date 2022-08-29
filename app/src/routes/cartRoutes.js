@@ -4,7 +4,7 @@ const routesCart = express.Router()
 const cartControllers = require('../controllers/cartController')
 const cartsControllers = cartControllers.getInstance()
 
-//RUTAS CARRITOS
+
 routesCart.get('/', cartsControllers.getAllCarts)
 routesCart.post('/', cartsControllers.addCart)
 routesCart.delete('/:id', cartsControllers.deleteCart)

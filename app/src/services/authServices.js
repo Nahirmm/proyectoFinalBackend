@@ -3,6 +3,7 @@ const authDao = new AuthDaoClass()
 const { createHash } = require('../utils/bcrypt')
 const logger = require('../utils/winston')
 const moment = require('moment')
+let instance = null
 
 class AuthService {
     constructor() {
@@ -18,7 +19,8 @@ class AuthService {
 
     async register(data) {
         try {
-            if (!authDao.userExistsByEmail(data.email)) {
+            const userExist = await authDao.userExistsByEmail(data.email)
+            if (!userExist) {
                 const newUser = {
                     timestamp: moment().format('L LTS'),
                     name: data.name,
@@ -26,21 +28,23 @@ class AuthService {
                     phone: data.phone,
                     address: data.address,
                     email: data.email,
-                    password: data.password
+                    password: createHash(data.password)
                 }
                 const userAdded = await authDao.register(newUser) 
                 return userAdded
             } else {
                 logger.warn("El usuario ya existe")
             }
-            const { password } = data;
-            const encryptedPassword = await bcrypt.hash(password, 10)
-            const user = await AuthServices.authDAO.register({ ...data, password: encryptedPassword })
-            await userEmail(user)
-            return user
-
         } catch (error) {
             logger.error("Error en register-Services: " + error)
+        }
+    }
+
+    async login(email, password) {
+        try {
+            
+        } catch (error) {
+            
         }
     }
 

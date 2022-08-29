@@ -22,12 +22,14 @@ class AuthDaoClass {
 
     async register(data) {
         try {
-            const user = await UserModel.create(data);
-            return user;
+            const user = await UserModel.create(data)
+            return user
         } catch (error) {
             logger.error("Error in register-DAO: " + error)
         }
     }
+
+
 
 }
 
