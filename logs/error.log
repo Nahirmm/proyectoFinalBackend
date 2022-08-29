@@ -1,0 +1,9 @@
+[31m[2022-08-29T13:26:18.964Z] - level: error - Error getAllProducts-DAO: TypeError: productsModel.find is not a function[39m
+[31m[2022-08-29T13:27:51.397Z] - level: error - Error getAllProducts-DAO: TypeError: productsModel.find is not a function[39m
+[31m[2022-08-29T13:29:40.846Z] - level: error - Error getAllProducts-DAO: TypeError: productsModel.find is not a function[39m
+[31m[2022-08-29T13:29:52.997Z] - level: error - Error getAllProducts-DAO: TypeError: productsModel.find is not a function[39m
+[31m[2022-08-29T13:32:13.708Z] - level: error - Error getAllProducts-DAO: TypeError: productsModel.find is not a function[39m
+[31m[2022-08-29T13:48:23.549Z] - level: error - Error in createCart-DAO: TypeError: cartModel is not a function[39m
+[31m[2022-08-29T13:49:18.189Z] - level: error - Error in createCart-DAO: TypeError: cartModel is not a function[39m
+[31m[2022-08-29T15:31:52.567Z] - level: error - Error saveProducts-DAO: ValidationError: code: Path `code` is required.[39m
+[31m[2022-08-29T15:35:25.288Z] - level: error - Error in createCart-DAO: ValidationError: address: Path `address` is required., email: Path `email` is required.[39m
