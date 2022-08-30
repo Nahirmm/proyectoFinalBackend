@@ -1,9 +1,10 @@
 const {createTransport} = require('nodemailer')
-const logger = require('./winston')
 require('dotenv').config()
-const sendEmail = async () =>  {
+
+
+const sendEmail = async (emailRecipient, bodyEmail, tittleEmail) =>  {
     
-    const MAIL = process.env.TEST_MAIL
+    const MAIL = process.env.ADMIN_MAIL
     const PASSW = process.env.PASS
 
     const transporter = createTransport({
@@ -17,13 +18,12 @@ const sendEmail = async () =>  {
 
     const mailOptions = {
         from: MAIL,
-        to: 'nanu-@live.com',
-        subject: 'Mail de prueba desde Node.js',
-        html: '<h1 style="color: blue;">Contenido de prueba desde <span style="color:green">Node.js con Nodemailer</span></h1>'
+        to: emailRecipient,
+        subject: tittleEmail,
+        html: `<div>${bodyEmail}</div>`
     }
 
     const info = await transporter.sendMail(mailOptions)
-    logger.data(JSON.stringify(info, null, ' '))
 }
 
 module.exports = sendEmail

@@ -1,11 +1,12 @@
-const app = require('./src/app')
+//const app = require('./src/app')
 //const express = require('express')
 require('dotenv').config()
 const logger = require('./src/utils/winston')
+const { httpServer } = require('./src/httpServer')
 
 const PORT = process.env.PORT || 8080
 
-app.listen(PORT, () => logger.info(`http://localhost:${PORT}/auth/login`))
+httpServer.listen(PORT, () => logger.info(`http://localhost:${PORT}/auth/login`))
 
 
 /* const cluster = express('cluster') 

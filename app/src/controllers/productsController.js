@@ -26,7 +26,7 @@ class productsControllers {
             if (productById != undefined) {
                 return res.status(200).json(productById)
             } else {
-                return res.status(404).json({ error : 'Producto no encontrado' })
+                return res.status(404).json({ error : 'El producto no existe' })
             }
         }catch (error) {
             res.status(500).json({error: error.message})

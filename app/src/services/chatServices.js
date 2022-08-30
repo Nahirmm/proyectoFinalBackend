@@ -38,7 +38,7 @@ class ChatService {
         }
     }
 
-    async saveMessages() {
+    async saveMessages(data) {
         try {
             //HACER (jwt)
         } catch (error) {
