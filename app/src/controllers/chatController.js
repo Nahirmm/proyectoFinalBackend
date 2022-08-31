@@ -14,7 +14,7 @@ class chatControllers {
 
     async getMessagesByUser(req, res) {
         try {
-            const user = req.params.id
+            const user = req.params.email
             const userMessages = await chatServiceNew.getMessagesByUser(user)
             res.status(200).json(userMessages)
         }catch (error) {
@@ -24,8 +24,8 @@ class chatControllers {
 
     async saveMessages(req, res) {
         try {
-            const newUser = await authServiceNew.register(req.body) 
-            res.status(200).json(newUser)
+            const newMsj = await chatServiceNew.saveMessages(req.body) 
+            res.status(200).json(newMsj)
         }catch (error) {
             res.status(500).json({error: error.message})
         }

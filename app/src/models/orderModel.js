@@ -1,11 +1,12 @@
 const mongoose = require('mongoose')
-const { Schema } = require('mongoose')
 
 const orderSchema = new mongoose.Schema({
-    timestamp: {type: Date, default: Date.now, required: true},
-    // items: [{type: Schema.Types.Array, ref: 'products'}],
-    // products: [{type: Schema.Types.Array, ref: 'products'}],
-    // address: {type: String, required: true}
+    numberOrder:{type: String, required: true},    
+    stateOrder:{type: String, required: true},  
+    timestamp: {type: String, required: true},  
+    user: {type: String, required: true},
+    address: {type: String, required: true},
+    products: {type: Array, required: true},
 })
 
 const orderModel = mongoose.model('orders', orderSchema);

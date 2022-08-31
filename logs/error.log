@@ -9,3 +9,47 @@
 [31m[2022-08-29T15:35:25.288Z] - level: error - Error in createCart-DAO: ValidationError: address: Path `address` is required., email: Path `email` is required.[39m
 [31m[2022-08-29T17:32:06.258Z] - level: error - Error en register-Services: ReferenceError: bcrypt is not defined[39m
 [31m[2022-08-29T17:32:26.894Z] - level: error - Error en register-Services: ReferenceError: bcrypt is not defined[39m
+[31m[2022-08-30T17:47:14.065Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:48:41.505Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:48:57.127Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:50:18.954Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:54:23.511Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:55:25.831Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T17:55:47.225Z] - level: error - Error in login-DAO: Error: data and hash arguments required[39m
+[31m[2022-08-30T18:30:37.074Z] - level: error - Error in saveMessages-DAO: ObjectParameterError: Parameter "obj" to Document() must be an object, got holis[39m
+[31m[2022-08-31T12:42:07.526Z] - level: error - Error in createCart-DAO: ValidationError: address: Path `address` is required., user: Path `user` is required.[39m
+[31m[2022-08-31T13:19:40.635Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T13:21:14.635Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T13:22:19.236Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:23:10.296Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:24:31.891Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:25:19.541Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:28:40.327Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:32:12.420Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:34:13.056Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:34:42.535Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:35:21.167Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:36:08.583Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:37:53.951Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:39:09.089Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:39:42.288Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:45:08.631Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:45:58.296Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:47:40.480Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:48:38.567Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:49:43.143Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T14:51:11.250Z] - level: error - Error in createCart-Services: TypeError: Cannot read properties of null (reading 'email')[39m
+[31m[2022-08-31T15:11:03.814Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of null (reading 'idProduct')[39m
+[31m[2022-08-31T15:19:40.850Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of null (reading 'idProduct')[39m
+[31m[2022-08-31T15:24:17.502Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of null (reading 'idProduct')[39m
+[31m[2022-08-31T15:24:54.971Z] - level: error - Error en addProductInCart-Services: ReferenceError: product is not defined[39m
+[31m[2022-08-31T15:27:35.780Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of null (reading 'idProduct')[39m
+[31m[2022-08-31T15:27:56.417Z] - level: error - Error en addProductInCart-Services: ReferenceError: product is not defined[39m
+[31m[2022-08-31T15:28:40.758Z] - level: error - Error en addProductInCart-Services: ReferenceError: product is not defined[39m
+[31m[2022-08-31T15:29:25.615Z] - level: error - Error en addProductInCart-Services: ReferenceError: product is not defined[39m
+[31m[2022-08-31T15:30:23.123Z] - level: error - Error en addProductInCart-Services: ReferenceError: qty is not defined[39m
+[31m[2022-08-31T15:31:59.768Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of undefined (reading 'title')[39m
+[31m[2022-08-31T15:32:39.477Z] - level: error - Error en addProductInCart-Services: ReferenceError: product is not defined[39m
+[31m[2022-08-31T15:33:08.600Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of undefined (reading 'title')[39m
+[31m[2022-08-31T16:05:57.350Z] - level: error - Error en addProductInCart-DAO: ReferenceError: product is not defined[39m
+[31m[2022-08-31T16:05:57.352Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of undefined (reading 'products')[39m

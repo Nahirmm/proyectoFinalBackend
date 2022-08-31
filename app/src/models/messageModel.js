@@ -1,6 +1,4 @@
 const mongoose = require('mongoose') 
-const { Schema } = require('mongoose')
-
 
 const MessageModel = mongoose.model('Messages', new mongoose.Schema({
     email: {type: String, required: true},

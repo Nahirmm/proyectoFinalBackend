@@ -1,16 +1,8 @@
 const { productsModel } = require ('../models/productModel')
 const logger = require('../utils/winston')
-let instance = null
+
 
 class ProductsDaoClass {
-    constructor() {}
-
-    static getInstance() {
-        if(!instance) {
-            instance = new ProductsDaoClass()
-        }
-        return instance
-    }
 
     async getAllProducts(){
         try{

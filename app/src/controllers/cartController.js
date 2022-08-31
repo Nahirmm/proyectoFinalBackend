@@ -1,32 +1,24 @@
-const containerCart = require('../services/cartServices')
-const newContainerCart = containerCart.getInstance()
+const CartService = require('../services/cartServices')
+const cartServices = new CartService()
 
-const containerProducts = require('../services/productsServices')
-const newContainerProducts = containerProducts.getInstance()
-
-let instance = null
+// const ProductsServices = require('../services/productsServices')
+// const productsServices = new ProductsServices()
 
 class cartControllers {
 
-    static getInstance() {
-        if(!instance) {
-            instance = new cartControllers()
-        }
-        return instance
-    }
-
     async getAllCarts(req, res) {
         try {
-            const allCarts = await newContainerCart.getAllCarts()
+            const allCarts = await cartServices.getAllCarts()
             res.status(200).json(allCarts)
         } catch (error) {
             res.status(500).json({error: error.message})
         }
     }
 
-    async addCart(req, res) {
+    async createCart(req, res) {
         try {
-            const newCart = await newContainerCart.createCart() 
+            const tokenHeader = req.headers.authorization || req.body.token || req.query.token || req.headers['x-access-token'];
+            const newCart = await cartServices.createCart(req.body, tokenHeader) 
             res.status(200).json(newCart)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -35,7 +27,7 @@ class cartControllers {
 
     async deleteCart(req, res) {
         try {
-            const deleteCart = await newContainerCart.deleteCart(req.params.id)
+            const deleteCart = await cartServices.deleteCart(req.params.id)
             res.status(200).json(deleteCart)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -44,7 +36,7 @@ class cartControllers {
 
     async productsinCart(req, res) {
         try {
-            const productsInCartById = await newContainerCart.listProductsInCart(req.params.id)
+            const productsInCartById = await cartServices.listProductsInCart(req.params.id)
             res.status(200).json(productsInCartById)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -53,9 +45,10 @@ class cartControllers {
 
     async addProductInCart(req, res) {
         try {
-            const product = await newContainerProducts.getByIdProduct(req.body.idProduct)
-            const addProduct = await newContainerCart.addProductInCart(req.params.id, product)
-            res.status(201).json(addProduct)
+            const qty = parseInt(req.body.qty)
+            const idCart = req.params.id
+            const addProduct = await cartServices.addProductInCart(idCart, req.body.idProduct, qty)
+            res.status(200).json(addProduct)
         }catch (error) {
             res.status(500).json({error: error.message})
         }
@@ -63,13 +56,22 @@ class cartControllers {
 
     async deleteProductInCart(req, res) {
         try {
-            const deleteProduct = await newContainerCart.deleteProductInCart(req.params.idcart, req.params.idprod)
+            const deleteProduct = await cartServices.deleteProductInCart(req.params.idcart, req.params.idprod)
             res.status(200).json(deleteProduct)
         }catch (error) {
             res.status(500).json({error: error.message})
         }
     }
 
+    async modifyProductInCart(req, res) {
+        try {
+            const qty = parseInt(req.body.qty)
+            const modifyCart = await cartServices.modifyProductInCart(req.params.idcart, req.params.idprod, qty)
+            res.status(200).json(modifyCart)
+        }catch (error) {
+            res.status(500).json({error: error.message})
+        }
+    }
 }
 
 module.exports = cartControllers

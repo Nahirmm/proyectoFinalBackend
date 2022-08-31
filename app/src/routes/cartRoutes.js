@@ -2,15 +2,18 @@ const express =  require('express')
 const routesCart = express.Router()
 
 const cartControllers = require('../controllers/cartController')
-const cartsControllers = cartControllers.getInstance()
+const cartsControllers = new cartControllers
+
+const {verifyUserToken} = require('../middleware/tokenLogin')
 
 
-routesCart.get('/', cartsControllers.getAllCarts)
-routesCart.post('/', cartsControllers.addCart)
-routesCart.delete('/:id', cartsControllers.deleteCart)
-routesCart.get('/:id/products', cartsControllers.productsinCart)
-routesCart.post('/:id/products', cartsControllers.addProductInCart)
-routesCart.delete('/:idcart/products/:idprod', cartsControllers.deleteProductInCart)
+routesCart.get('/', verifyUserToken, cartsControllers.getAllCarts)
+routesCart.post('/', verifyUserToken, cartsControllers.createCart)
+routesCart.delete('/:id', verifyUserToken, cartsControllers.deleteCart)
+routesCart.get('/:id/products', verifyUserToken, cartsControllers.productsinCart)
+routesCart.post('/:id/products', verifyUserToken, cartsControllers.addProductInCart)
+routesCart.delete('/:idcart/products/:idprod', verifyUserToken, cartsControllers.deleteProductInCart)
+routesCart.put('/:id', verifyUserToken, cartsControllers.modifyProductInCart)
 
 
 module.exports = { routesCart }

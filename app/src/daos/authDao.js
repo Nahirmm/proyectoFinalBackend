@@ -1,20 +1,15 @@
 const { UserModel } = require ('../models/userModel')
 const logger = require('../utils/winston')
-let instance = null
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken') 
 
 class AuthDaoClass {
 
-    static getInstance() {
-        if(!instance) {
-            instance = new AuthDaoClass()
-        }
-        return instance
-    }
-
     async userExistsByEmail(email) {
         try {
-            const emailUser = await UserModel.findOne({email})
-            return (emailUser != undefined)
+            const emailUser = await UserModel.findOne({ email:email })
+            console.log(emailUser)
+            return emailUser
         } catch (error) {
             logger.error("Error in userExists-DAO: " + error)
         }
@@ -29,8 +24,45 @@ class AuthDaoClass {
         }
     }
 
+    async login(email, password) {
+        try {
+            const user = await UserModel.findOne({ email })
+            const isPasswordMatch = bcrypt.compare(password, user.password)
+            if (!isPasswordMatch || !user) {
+                logger.warn('Usuario o contraseña incorrecta')
+            }
+            const payload = { id: user._id, email: user.email}
+            const secret = process.env.JWT_SECRET
+            const token = jwt.sign(payload, secret, { expiresIn: process.env.JWT_TIME })
+            return { ...payload, token }
+        } catch (error) {
+            logger.error("Error in login-DAO: " + error)
+        }
+    }
 
-
+    async getUserByToken(tokenH) {
+        let token = tokenH
+        try{
+            if (!tokenH) {
+                return null
+            }
+            try{
+                const tempToken = tokenH.split(' ')
+                if (tempToken.length == 2) {
+                    token = tempToken[1]
+                }
+                const secret = process.env.JWT_SECRET
+                const decoded = jwt.verify(token, secret)
+                const user = await UserModel.findOne({ email: decoded.email })
+                return user
+            } catch (error) {
+                return null
+            }
+        }
+        catch(error){
+            logger.error("Error in getUserByToken-DAO: " + error)
+        }
+    }
 }
 
 module.exports = AuthDaoClass

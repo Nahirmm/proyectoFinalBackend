@@ -5,23 +5,13 @@ const mongoose = require('mongoose')
 
 const app = express()
 
-/* const passport = require('passport')
-const { strategyLogin, strategySignup } = require('./src/api/middleware/passportLocal.js')
-
-passport.use('login', strategyLogin);
-passport.use('signup', strategySignup) */
 
 const { routesProducts } = require('./routes/productsRoutes')
 const { routesCart} = require('./routes/cartRoutes')
 const { routesAuth } = require('./routes/authRoutes')
 const { routesChat } = require('./routes/chatRoutes')
-// const sendEmail = require('./src/api/utils/nodemailer.js')
-// const sendSMS = require('./src/api/utils/twilioSMS.js')
-// const sendWhatsapp = require('./src/api/utils/twilioWsp.js')
+const { routesOrder } = require('./routes/orderRoutes')
 
-//const { graphqlHTTP } = require('express-graphql') 
-//const {schemaGraphQL} = require('./src/api/models/graphql')
-//const graphQLRoot = require('./src/api/controllers/controllerGraphQL')
 
 app.set('view engine', 'ejs')
 app.set('views', './src/views')
@@ -41,20 +31,13 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// app.use(passport.initialize())
-// app.use(passport.session())
 
 app.use('/auth', routesAuth)
 app.use('/products', routesProducts)
 app.use('/cart', routesCart)
 app.use('/chat', routesChat)
+app.use('/orders', routesOrder)
 
-/*app.use('/graphql', graphqlHTTP({
-    schema: schemaGraphQL,
-    rootValue: graphQLRoot,
-    graphiql: true,
- }));*/
- 
 
 mongoose.connect(process.env.MONGODB)
 
@@ -64,9 +47,5 @@ app.all('*', (req, res) => {
         descripcion: `Ruta: ${req.originalUrl} Metodo: ${req.method} no implementada`
     })
 })
-
-//sendEmail()
-//sendSMS()
-//sendWhatsapp()
     
 module.exports = app

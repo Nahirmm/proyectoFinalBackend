@@ -3,6 +3,7 @@ const chatDaoNew = new ChatDao()
 const AuthDaoClass = require('../daos/authDao')
 const authDao = new AuthDaoClass()
 const logger = require('../utils/winston')
+const moment = require('moment')
 
 class ChatService {
 
@@ -22,16 +23,11 @@ class ChatService {
 
     async getMessagesByUser(email) {
         try {
-            const user = await authDao.userExistsByEmail(email)
-            if (user) {
-                const userMessages = await chatDaoNew.getMessagesByUser(email)
-                if (userMessages.length > 0) {
-                    return userMessages
-                } else {
-                    logger.warn("No existen mensajes para este usuario")
-                }
+            const userMessages = await chatDaoNew.getMessagesByUser(email)
+            if (userMessages.length > 0) {
+                return userMessages
             } else {
-                logger.warn("No existe el usuario")
+                logger.warn("No existen mensajes para este usuario")
             }
         } catch (error) {
             logger.error("Error en getMessagesByUser-Services: " + error)
@@ -40,12 +36,13 @@ class ChatService {
 
     async saveMessages(data) {
         try {
-            //HACER (jwt)
+            data.timestamp = moment().format('L LTS')
+            const newMsj = await chatDaoNew.saveMessages(data)
+            return newMsj
         } catch (error) {
             logger.error("Error en saveMessages-Services: " + error)
         }
     }
-
 }
 
 module.exports = ChatService

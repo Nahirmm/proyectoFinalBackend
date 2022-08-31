@@ -6,6 +6,7 @@ const authController = new authControllers()
 
 
 routesAuth.post('/register', authController.register)
-//routesAuth.get('/login', productsControllers.getProductById)
+routesAuth.post('/login', authController.login)
+
 
 module.exports = { routesAuth }

@@ -1,20 +1,13 @@
 const AuthDaoClass = require('../daos/authDao')
 const authDao = new AuthDaoClass()
-const { createHash } = require('../utils/bcrypt')
+const bcrypt = require('bcrypt')
 const logger = require('../utils/winston')
 const moment = require('moment')
-let instance = null
+
 
 class AuthService {
     constructor() {
         this.cart = []
-    }
-
-    static getInstance() {
-        if(!instance) {
-            instance = new AuthService()
-        }
-        return instance
     }
 
     async register(data) {
@@ -28,7 +21,7 @@ class AuthService {
                     phone: data.phone,
                     address: data.address,
                     email: data.email,
-                    password: createHash(data.password)
+                    password: bcrypt.hash(data.password, 10)
                 }
                 const userAdded = await authDao.register(newUser) 
                 return userAdded
@@ -40,14 +33,15 @@ class AuthService {
         }
     }
 
-    async login(email, password) {
+    async login(data) {
         try {
-            
+            const { email, password } = data
+            const user = await authDao.login(email, password)
+            return user
         } catch (error) {
-            
+            logger.error("Error en login-Services: " + error)
         }
     }
-
 }
 
 module.exports = AuthService

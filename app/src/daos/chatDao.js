@@ -15,22 +15,21 @@ class ChatDao {
 
     async getMessagesByUser(email) {
         try {
-            const messagesUser = await MessageModel.find({email})
+            const messagesUser = await MessageModel.find({email:email})
             return messagesUser
         } catch (error) {
             logger.error("Error in getMessagesByUser-DAO: " + error)
         }  
     }
 
-    async saveMessages(message){
+    async saveMessages(data){
         try {
-            const saveMessage = await MessageModel(message).save()
+            const saveMessage = await MessageModel(data).save()
             return saveMessage
         } catch (error) {
             logger.error("Error in saveMessages-DAO: " + error)
         }
     }
-
 }
 
 module.exports = ChatDao

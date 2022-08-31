@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { Schema } = require('mongoose')
 
 const productsSchema = new mongoose.Schema({
     timestamp: {type: Date, default: Date.now, required: false},

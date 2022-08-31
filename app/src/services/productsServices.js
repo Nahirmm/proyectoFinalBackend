@@ -1,25 +1,17 @@
-const productsDaos = require('../daos/productDao')
-const prodDao = productsDaos.getInstance()
+const ProductsDaoClass = require('../daos/productDao')
+const prodDao = new ProductsDaoClass()
 const logger = require('../utils/winston')
 const moment = require('moment')
-let instance = null
+
 
 class ProductsServices {
-    constructor() {}
-
-    static getInstance() {
-        if(!instance) {
-            instance = new ProductsServices()
-        }
-        return instance
-    }
 
     async getAllProducts(){
         try{
             const listProd = await prodDao.getAllProducts()
             return listProd
         }catch(error){
-            logger.error("Error getAllProducts " + error)
+            logger.error("Error getAllProducts-Services " + error)
         }
     }
 
@@ -37,7 +29,7 @@ class ProductsServices {
             const prodAdded = await prodDao.saveProduct(newProduct) 
             return prodAdded
         }catch(error){
-            logger.error("Error saveProducts " + error)
+            logger.error("Error saveProducts-Services " + error)
         }
     } 
 
@@ -47,10 +39,10 @@ class ProductsServices {
                 const prod = await prodDao.getByIdProduct(idProduct)
                 return prod
             } else {
-                logger.warn('En getByIdProduct-productsService el ID ingresado es incorrecto')
+                logger.warn('El ID ingresado es incorrecto')
             }
         } catch(error){
-            logger.error("Error in getByIdProduct " + error)
+            logger.error("Error in getByIdProduct-Services " + error)
         }
     }
 
@@ -69,10 +61,10 @@ class ProductsServices {
                 const updatedProduct = await prodDao.updateProduct(idProduct, updateProduct)
                 return updatedProduct
             } else {
-                logger.warn('En updateProduct-productsServices el ID ingresado es incorrecto')
+                logger.warn('El ID ingresado es incorrecto')
             }
         } catch(error){
-            logger.error("Error in updateProducts " + error)
+            logger.error("Error in updateProducts-Services " + error)
         }
     }
     
@@ -81,10 +73,10 @@ class ProductsServices {
             if (idProduct.length == 24) {
                 await prodDao.deleteProduct(idProduct)
             } else {
-                logger.warn('En deleteProduct el ID ingresado es incorrecto')
+                logger.warn('El ID ingresado es incorrecto')
             }
         }catch (error) {
-            logger.error("Error " + error)
+            logger.error("Error in deleteProduct-Services " + error)
         }
     } 
 
@@ -93,10 +85,9 @@ class ProductsServices {
             const productsByCategory = await prodDao.getProductsByCategory(category)
             return productsByCategory
         } catch (error) {
-            logger.error("Error " + error)
+            logger.error("Error in getProductsByCategory-Services " + error)
         }
     }
-
 }
 
 module.exports = ProductsServices

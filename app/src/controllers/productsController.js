@@ -1,19 +1,12 @@
-const containerProducts = require('../services/productsServices')
-const newContainerProducts = containerProducts.getInstance()
-let instance = null
+const ProductsServices = require('../services/productsServices')
+const productsServices = new ProductsServices()
+
 
 class productsControllers {
 
-    static getInstance() {
-        if(!instance) {
-            instance = new productsControllers()
-        }
-        return instance
-    }
-
     async getAllProducts(req, res) {
         try {
-            const allProducts =  await newContainerProducts.getAllProducts()
+            const allProducts =  await productsServices.getAllProducts()
             res.status(200).json(allProducts)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -22,7 +15,7 @@ class productsControllers {
 
     async getProductById(req, res) {
         try {
-            const productById = await newContainerProducts.getByIdProduct(req.params.id)
+            const productById = await productsServices.getByIdProduct(req.params.id)
             if (productById != undefined) {
                 return res.status(200).json(productById)
             } else {
@@ -35,7 +28,7 @@ class productsControllers {
 
     async addProduct(req, res) {
         try {
-            const newProduct = await newContainerProducts.saveProduct(req.body) 
+            const newProduct = await productsServices.saveProduct(req.body) 
             res.status(200).json(newProduct)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -44,7 +37,7 @@ class productsControllers {
 
     async updateProduct(req, res) {
         try {
-            const updateP = await newContainerProducts.updateProduct(req.params.id, req.body)
+            const updateP = await productsServices.updateProduct(req.params.id, req.body)
             res.status(200).json(updateP)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -53,7 +46,7 @@ class productsControllers {
 
     async deleteProduct(req, res) {
         try {
-            const deleteP = await newContainerProducts.deleteProduct(req.params.id)
+            const deleteP = await productsServices.deleteProduct(req.params.id)
             res.status(200).json(deleteP)
         }catch (error) {
             res.status(500).json({error: error.message})
@@ -62,7 +55,7 @@ class productsControllers {
 
     async getProductsByCategory(req, res) {
         try {
-            const productsByCategory = await newContainerProducts.getProductsByCategory(req.params.category)
+            const productsByCategory = await productsServices.getProductsByCategory(req.params.category)
             if (productsByCategory != undefined) {
                 return res.status(200).json(productsByCategory)
             } else {

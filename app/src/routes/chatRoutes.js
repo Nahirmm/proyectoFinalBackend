@@ -3,12 +3,13 @@ const routesChat = express.Router()
 
 const chatControllers = require('../controllers/chatController')
 const chatController = new chatControllers()
-const authControllers = require('../controllers/authController')
-const authController = new authControllers()
+
+const {verifyUserToken} = require('../middleware/tokenLogin')
 
 
-routesChat.get('/', chatController.getAllMessages)
-routesChat.get('/:email', chatController.getMessagesByUser)
-routesChat.post('/', chatController.saveMessages)
+routesChat.get('/', verifyUserToken, chatController.getAllMessages)
+routesChat.get('/:email', verifyUserToken, chatController.getMessagesByUser)
+routesChat.post('/', verifyUserToken, chatController.saveMessages)
+
 
 module.exports = { routesChat }

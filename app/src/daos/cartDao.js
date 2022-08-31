@@ -1,17 +1,10 @@
 const { cartModel } = require ('../models/cartModel')
 const logger = require('../utils/winston')
-let instance = null
+
 
 class CartDaoClass {
     constructor() {
         this.cart = []
-    }
-
-    static getInstance() {
-        if(!instance) {
-            instance = new CartDaoClass()
-        }
-        return instance
     }
 
     async getAllCarts() {
@@ -19,7 +12,25 @@ class CartDaoClass {
             const carts = await cartModel.find({})
             return carts
         } catch (error) {
-            logger.error("Error in getAllCars-DAO: " + error)
+            logger.error("Error in getAllCarts-DAO: " + error)
+        }
+    }
+
+    async getCartById(idCart) {
+        try{
+            const cartByUser = await cartModel.findById(idCart)
+            return cartByUser
+        } catch (error) {
+            logger.error("Error in getCartById-DAO: " + error)
+        }
+    }
+
+    async getCartByUser(idUser) {
+        try{
+            const cartByUser = await cartModel.find({user:idUser})
+            return cartByUser
+        } catch (error) {
+            logger.error("Error in getCartByUser-DAO: " + error)
         }
     }
 
@@ -50,13 +61,28 @@ class CartDaoClass {
         }
     }
 
-    async addProductInCart(idCart, product) {
+    async addProductInCart(idCart, addProd) {
         try {
             const cartById = await cartModel.findById(idCart)
-            cartById.products.push(product)
+            if (cartById === null) {
+                logger.warn("No se encontró el carrito")
+            }
+            console.log(cartById.products)
+            const existProd = cartById.products.find(product => product.productId === addProd.productId)
+            if(existProd){
+                const products = cartById.products.map(product => {
+                    if(product.productId === addProd.productId){
+                        product.qty += addProd.qty
+                        product.totalPrice = product.qty * product.unitPrice
+                    }
+                    return product
+                } )
+                cartById.products = products
+            } else {
+                cartById.products.push(addProd)
+            }
             const updateCart = await cartModel.findByIdAndUpdate(idCart, cartById)
             return updateCart
-
         }catch (error) {
             logger.error("Error en addProductInCart-DAO: " + error)
         }
@@ -65,13 +91,51 @@ class CartDaoClass {
     async deleteProductInCart(idCart, idProduct) {
         try{
             const cartById = await cartModel.findById(idCart)
-            cartById.products.splice(idProduct)
-            const cartUpdated = await cartModel.findByIdAndUpdate(idCart, cartById)
-            return cartUpdated
+            if (cartById===null) {
+                logger.warn("No se encontró el carrito")
+            }
+
+            const productsCart = cartById.products.find(product => product.idProduct === idProduct)
+            if(productsCart){
+                // const products = cartById.products.splice(productsCart)
+                // cartById.products = products
+                cartById.products = cartById.products.splice(productsCart)
+                const cartUpdated = await cartModel.findByIdAndUpdate(idCart, cartById)
+                return cartUpdated
+            } else {
+                logger.warn("No se encontró el producto en el carrito")
+            }
         }catch (error) {
             logger.error("Error en deleteProductInCart-DAO: " + error)
         }
     } 
+
+    async modifyProductInCart(idCart, idProduct, qty) {
+        try{
+            const cartById = await cartModel.findById(idCart)
+            if (cartById===null) {
+                logger.warn("No se encontró el carrito")
+            }
+
+            const productsCart = cartById.products.find(product => product.idProduct === idProduct)
+            if(productsCart){
+                const products = cartById.products.map(product => {
+                    if(product.idProduct === idProduct){
+                        product.qty += qty
+                        product.totalPrice = qty * product.unitPrice
+                    }
+                    return product
+            })
+                cartById.products = products
+                const cartUpdated = await cartModel.findByIdAndUpdate(cartID, cartById)
+                return cartUpdated
+            } else {
+                logger.warn("No se encontró el producto en el carrito")
+            }
+        } catch (error) {
+            logger.error("Error en modifyProductInCart-DAO: " + error)
+        }
+    }
 }
 
 module.exports = CartDaoClass
