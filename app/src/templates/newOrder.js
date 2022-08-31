@@ -9,8 +9,8 @@ const orderEmail = async (order, cart) => {
 
     cart.products.forEach(prod => {
         numTotalProd += prod.qty
-        totalProdPrice += prod.priceTotal
-        prodDetail += `<div> Producto : ${prod.title}, Precio unitario : ${prod.priceUnit}, Cantidad: ${prod.qty}, Precio total: ${prod.priceTotal} </div>`
+        totalProdPrice += prod.totalPrice
+        prodDetail += `<div> Producto : ${prod.title}, Precio unitario : ${prod.priceUnit}, Cantidad: ${prod.qty}, Precio total: ${prod.totalPrice} </div>`
     })
 
     let emailRecipient = process.env.ADMIN_MAIL + ' , ' + order.user

@@ -53,3 +53,7 @@
 [31m[2022-08-31T15:33:08.600Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of undefined (reading 'title')[39m
 [31m[2022-08-31T16:05:57.350Z] - level: error - Error en addProductInCart-DAO: ReferenceError: product is not defined[39m
 [31m[2022-08-31T16:05:57.352Z] - level: error - Error en addProductInCart-Services: TypeError: Cannot read properties of undefined (reading 'products')[39m
+[31m[2022-08-31T20:03:09.969Z] - level: error - Error en modifyProductInCart-DAO: TypeError: Cannot read properties of null (reading 'products')[39m
+[31m[2022-08-31T20:03:48.576Z] - level: error - Error en modifyProductInCart-DAO: ReferenceError: cartID is not defined[39m
+[31m[2022-08-31T20:07:15.173Z] - level: error - Error en addProductInCart-DAO: TypeError: Cannot read properties of undefined (reading 'productId')[39m
+[31m[2022-08-31T20:23:27.806Z] - level: error - Error en modifyProductInCart-DAO: ReferenceError: cartID is not defined[39m

@@ -74,7 +74,7 @@ class CartService {
                 category: productById.category,
                 priceUnit: productById.price,
                 qty: qty,
-                priceTotal: productById.price * qty
+                totalPrice: productById.price * qty
             }
             const cartUpdated = await cartDao.addProductInCart(idCart, addProd)
             return cartUpdated

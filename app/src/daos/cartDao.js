@@ -67,13 +67,12 @@ class CartDaoClass {
             if (cartById === null) {
                 logger.warn("No se encontró el carrito")
             }
-            console.log(cartById.products)
-            const existProd = cartById.products.find(product => product.productId === addProd.productId)
+            const existProd = cartById.products.find(product => product.productId == addProd.productId)          
             if(existProd){
                 const products = cartById.products.map(product => {
                     if(product.productId === addProd.productId){
                         product.qty += addProd.qty
-                        product.totalPrice = product.qty * product.unitPrice
+                        product.totalPrice = product.qty * product.priceUnit
                     }
                     return product
                 } )
@@ -81,7 +80,7 @@ class CartDaoClass {
             } else {
                 cartById.products.push(addProd)
             }
-            const updateCart = await cartModel.findByIdAndUpdate(idCart, cartById)
+            const updateCart = await cartModel.findByIdAndUpdate(idCart, cartById, {new: true})
             return updateCart
         }catch (error) {
             logger.error("Error en addProductInCart-DAO: " + error)
@@ -94,8 +93,8 @@ class CartDaoClass {
             if (cartById===null) {
                 logger.warn("No se encontró el carrito")
             }
-
-            const productsCart = cartById.products.find(product => product.idProduct === idProduct)
+            console.log(cartById)
+            const productsCart = cartById.products.find(product => product.idProduct == idProduct)
             if(productsCart){
                 // const products = cartById.products.splice(productsCart)
                 // cartById.products = products
@@ -116,18 +115,17 @@ class CartDaoClass {
             if (cartById===null) {
                 logger.warn("No se encontró el carrito")
             }
-
-            const productsCart = cartById.products.find(product => product.idProduct === idProduct)
+            const productsCart = cartById.products.find(product => product.productId === idProduct)
             if(productsCart){
                 const products = cartById.products.map(product => {
-                    if(product.idProduct === idProduct){
-                        product.qty += qty
-                        product.totalPrice = qty * product.unitPrice
+                    if(product.productId === idProduct){
+                        product.qty =+ qty
+                        product.totalPrice = qty * product.priceUnit
                     }
                     return product
             })
                 cartById.products = products
-                const cartUpdated = await cartModel.findByIdAndUpdate(cartID, cartById)
+                const cartUpdated = await cartModel.findByIdAndUpdate(idCart, cartById)
                 return cartUpdated
             } else {
                 logger.warn("No se encontró el producto en el carrito")

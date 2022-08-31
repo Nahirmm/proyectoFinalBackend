@@ -66,7 +66,8 @@ class cartControllers {
     async modifyProductInCart(req, res) {
         try {
             const qty = parseInt(req.body.qty)
-            const modifyCart = await cartServices.modifyProductInCart(req.params.idcart, req.params.idprod, qty)
+            const idCart = req.params.id
+            const modifyCart = await cartServices.modifyProductInCart(idCart, req.body.idprod, qty)
             res.status(200).json(modifyCart)
         }catch (error) {
             res.status(500).json({error: error.message})

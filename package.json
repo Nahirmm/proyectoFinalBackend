@@ -22,6 +22,6 @@
     "winston": "^3.8.1"
   },
   "scripts": {
-    "start": "node app/server.js"
+    "start": "nodemon app/server.js"
   }
 }
