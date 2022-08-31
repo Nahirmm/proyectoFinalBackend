@@ -5,7 +5,7 @@ class OrderDao {
 
     async generateOrder(order) {
         try{
-            const generatedOrder = await new orderModel(order).save()
+            const generatedOrder = await orderModel(order).save()
             return generatedOrder
         }catch (error) {
             logger.error("Error generateOrder-DAO: " + error)

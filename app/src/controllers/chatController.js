@@ -24,7 +24,8 @@ class chatControllers {
 
     async saveMessages(req, res) {
         try {
-            const newMsj = await chatServiceNew.saveMessages(req.body) 
+            const email = req.email
+            const newMsj = await chatServiceNew.saveMessages(req.body, email) 
             res.status(200).json(newMsj)
         }catch (error) {
             res.status(500).json({error: error.message})

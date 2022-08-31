@@ -1,8 +1,6 @@
 const CartService = require('../services/cartServices')
 const cartServices = new CartService()
 
-// const ProductsServices = require('../services/productsServices')
-// const productsServices = new ProductsServices()
 
 class cartControllers {
 

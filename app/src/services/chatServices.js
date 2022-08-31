@@ -34,9 +34,10 @@ class ChatService {
         }
     }
 
-    async saveMessages(data) {
+    async saveMessages(data, email) {
         try {
             data.timestamp = moment().format('L LTS')
+            data.email = email
             const newMsj = await chatDaoNew.saveMessages(data)
             return newMsj
         } catch (error) {

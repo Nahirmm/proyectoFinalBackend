@@ -8,7 +8,6 @@ class AuthDaoClass {
     async userExistsByEmail(email) {
         try {
             const emailUser = await UserModel.findOne({ email:email })
-            console.log(emailUser)
             return emailUser
         } catch (error) {
             logger.error("Error in userExists-DAO: " + error)

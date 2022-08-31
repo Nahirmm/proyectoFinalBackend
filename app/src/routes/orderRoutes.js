@@ -21,7 +21,7 @@ const {verifyUserToken} = require('../middleware/tokenLogin')
 
 
 routesOrder.post('/', verifyUserToken, orderController.generateOrder)
-routesOrder.post('/', verifyUserToken, orderController.getAllOrders)
+routesOrder.get('/', verifyUserToken, orderController.getAllOrders)
 
 
 module.exports = { routesOrder }

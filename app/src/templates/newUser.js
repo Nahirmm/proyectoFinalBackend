@@ -8,7 +8,7 @@ const userEmail = async (user) => {
     let bodyEmail = `<h1>Se ha registrado en el Proyecto Final Backend de Nahirmm: </h1>
                 <p> Usuario  : ${user.email} </p>
                 <p> Nombre   : ${user.name}</p>
-                <p> Apellido : ${user.lastmane}</p>
+                <p> Apellido : ${user.lastname}</p>
                 <p> Direccion : ${user.address}</p>
                 <p>Gracias Por Registrarse</p>`
     

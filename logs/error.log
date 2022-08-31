@@ -57,3 +57,37 @@
 [31m[2022-08-31T20:03:48.576Z] - level: error - Error en modifyProductInCart-DAO: ReferenceError: cartID is not defined[39m
 [31m[2022-08-31T20:07:15.173Z] - level: error - Error en addProductInCart-DAO: TypeError: Cannot read properties of undefined (reading 'productId')[39m
 [31m[2022-08-31T20:23:27.806Z] - level: error - Error en modifyProductInCart-DAO: ReferenceError: cartID is not defined[39m
+[31m[2022-08-31T21:15:00.477Z] - level: error - Error en deleteProductInCart-DAO: ReferenceError: productsCart is not defined[39m
+[31m[2022-08-31T21:34:58.175Z] - level: error - Error en deleteProductInCart-DAO: ObjectParameterError: Parameter "filter" to updateOne() must be an object, got 630fd37d7a1baaa8c10adfea[39m
+[31m[2022-08-31T21:39:42.699Z] - level: error - Error in generateOrder-Services TypeError: orderEmail is not a function[39m
+[31m[2022-08-31T21:57:29.927Z] - level: error - Error in generateOrder-Services TypeError: Cannot read properties of undefined (reading 'slice')[39m
+[31m[2022-08-31T22:23:26.224Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:23:26.227Z] - level: error - Error en register-Services: TypeError: newUser is not a function[39m
+[31m[2022-08-31T22:25:14.456Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:25:14.457Z] - level: error - Error en register-Services: TypeError: newUser is not a function[39m
+[31m[2022-08-31T22:31:59.908Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:31:59.912Z] - level: error - Error en register-Services: TypeError: newUser is not a function[39m
+[31m[2022-08-31T22:32:50.430Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:32:50.432Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:33:11.126Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:33:11.127Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:34:22.535Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:34:22.539Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:34:46.856Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:34:46.859Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:35:16.233Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:35:16.236Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:35:35.219Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:35:35.221Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:41:56.532Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:41:56.534Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:51:30.670Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:51:30.672Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:52:46.312Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:52:46.314Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:53:19.114Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:53:19.115Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T22:54:33.802Z] - level: error - Error in register-DAO: ValidationError: password: Cast to string failed for value "Promise { <pending> }" (type Promise) at path "password"[39m
+[31m[2022-08-31T22:54:33.804Z] - level: error - Error en register-Services: TypeError: Cannot read properties of undefined (reading 'user')[39m
+[31m[2022-08-31T23:03:17.596Z] - level: error - Error in saveMessages-DAO: ValidationError: email: Path `email` is required.[39m
+[31m[2022-08-31T23:22:01.380Z] - level: error - Error in saveMessages-DAO: ValidationError: email: Path `email` is required.[39m

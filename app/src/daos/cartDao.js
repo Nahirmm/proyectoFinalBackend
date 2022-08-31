@@ -93,17 +93,10 @@ class CartDaoClass {
             if (cartById===null) {
                 logger.warn("No se encontró el carrito")
             }
-            console.log(cartById)
-            const productsCart = cartById.products.find(product => product.idProduct == idProduct)
-            if(productsCart){
-                // const products = cartById.products.splice(productsCart)
-                // cartById.products = products
-                cartById.products = cartById.products.splice(productsCart)
-                const cartUpdated = await cartModel.findByIdAndUpdate(idCart, cartById)
-                return cartUpdated
-            } else {
-                logger.warn("No se encontró el producto en el carrito")
-            }
+            const productsNew = cartById.products.filter(product => product.productId != idProduct)
+            cartById.products = productsNew
+            const cartUpdated = await cartModel.findByIdAndUpdate(idCart, cartById)
+            return cartById 
         }catch (error) {
             logger.error("Error en deleteProductInCart-DAO: " + error)
         }

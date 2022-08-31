@@ -3,6 +3,7 @@ const authDao = new AuthDaoClass()
 const bcrypt = require('bcrypt')
 const logger = require('../utils/winston')
 const moment = require('moment')
+const userEmail = require('../templates/newUser')
 
 
 class AuthService {
@@ -14,6 +15,7 @@ class AuthService {
         try {
             const userExist = await authDao.userExistsByEmail(data.email)
             if (!userExist) {
+                let encryptedPassword = await bcrypt.hash(data.password, 10)
                 const newUser = {
                     timestamp: moment().format('L LTS'),
                     name: data.name,
@@ -21,9 +23,10 @@ class AuthService {
                     phone: data.phone,
                     address: data.address,
                     email: data.email,
-                    password: bcrypt.hash(data.password, 10)
+                    password: encryptedPassword
                 }
                 const userAdded = await authDao.register(newUser) 
+                const sendMail = await userEmail(userAdded)
                 return userAdded
             } else {
                 logger.warn("El usuario ya existe")

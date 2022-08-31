@@ -7,7 +7,7 @@ const AuthDaoClass = require('../daos/authDao')
 const authDao = new AuthDaoClass()
 const CartDaoClass = require('../daos/cartDao')
 const cartDao = new CartDaoClass()
-const { orderEmail } = require('../templates/newOrder')
+const orderEmail = require('../templates/newOrder')
 
 
 class OrderServices {
@@ -21,7 +21,7 @@ class OrderServices {
                 numOrder = '001'
             } else {
                 const lastOrder = orders[orders.length - 1]
-                const numLastOrder = lastOrder.numberOrder.slice(5)
+                const numLastOrder = lastOrder.numberOrder.slice(2)
                 const numNextOrder = parseInt(numLastOrder) + 1
                 numOrder = numNextOrder.toString().padStart(3, '0')
             } 
