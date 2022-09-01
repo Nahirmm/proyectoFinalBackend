@@ -75,8 +75,8 @@ npm start
 * **jsonwebtoken** - version 8.5.1, utilizada como token de seguridad del usuario.
 * **moment** - version 2.29.4, utilizada para administrar fecha y hora.
 * **nodemailer** - version 6.7.8, utilizada para el envio de mails al registrarse un nuevo usuario y al generarse una orden.
-* ejs - version 3.1.8, utilizada como motor de plantillas.
-* socket.io - version 4.5.1, utilizada comunicación de websockets.
+* **ejs** - version 3.1.8, utilizada como motor de plantillas.
+* **socket.io** - version 4.5.1, utilizada comunicación de websockets.
 
 ## Endpoints
 
