@@ -3,6 +3,7 @@
 ### Resumen
 
 Se realizó el backend de una aplicación de ecommerce integrando administración de usuarios y notificaciones a los mismos.
+
 Secciones:
 - Auth:
     - Register: Registra un usuario nuevo, encriptando la contraseña.
